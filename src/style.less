@@ -1,5 +1,16 @@
 @import "normalize.less";
 
+/* Mixins */
+.rounded {
+    border-radius: 6px;
+}
+
+.centered-children {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 html {
     color: #eeeeee;
     background-color: black;
@@ -11,10 +22,8 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    .centered-children();
 }
 
 h1, h2 {
@@ -30,10 +39,6 @@ h1, h2 {
 
 #header {
 
-}
-
-.rounded {
-    border-radius: 6px;
 }
 
 .panel {
@@ -54,4 +59,34 @@ h1, h2 {
     background-color: black;
     padding: 10px;
     .rounded();
+    .centered-children();
+}
+
+.ring-wrapper {
+    position: relative;
+    width: 50%;
+}
+
+.ring-wrapper:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.ring-outer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 20px 20px white;
+    .centered-children();
+}
+
+.ring-inner {
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    background-color: black;
+    box-shadow: inset 0 0 20px 20px white;
 }
