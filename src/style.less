@@ -65,6 +65,8 @@ h1, h2 {
 .ring-wrapper {
     position: relative;
     width: 50%;
+    filter: blur(5px);
+    .centered-children();
 }
 
 .ring-wrapper:after {
@@ -79,14 +81,13 @@ h1, h2 {
     width: 100%;
     border-radius: 50%;
     background-color: white;
-    box-shadow: 0 0 20px 20px white;
-    .centered-children();
+    border: 2px solid white;
 }
 
 .ring-inner {
-    height: 80%;
-    width: 80%;
+    position: absolute;
+    height: 70%;
+    width: 70%;
     border-radius: 50%;
     background-color: black;
-    box-shadow: inset 0 0 20px 20px white;
 }
