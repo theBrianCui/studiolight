@@ -8,5 +8,7 @@ export const DOM = {
     query: (query: string): Element[] => {
         return Array.from(document.querySelectorAll(query));
     },
-    getChildren
+    getChildren: (element: Element): Element[] => {
+        return Array.from(element.children);
+    }
 }
