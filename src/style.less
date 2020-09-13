@@ -31,6 +31,12 @@ html {
     .centered-children();
 }
 
+#backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 h1, h2 {
     margin: 0;
     padding: 0;
@@ -43,7 +49,8 @@ h1, h2 {
 }
 
 .panel {
-    background-color: rgba(80, 80, 80, 0.5);
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 2px solid #ffffff49;
     padding: 10px;
     margin: 10px 0;
     .rounded();
@@ -94,4 +101,10 @@ h1, h2 {
 
 #templates {
     display: none;
+}
+
+.template {
+    width: 100%;
+    height: 100%;
+    .centered-children();
 }

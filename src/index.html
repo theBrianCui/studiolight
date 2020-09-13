@@ -5,6 +5,14 @@
         <link rel="stylesheet" type="text/css" href="style.less">
     </head>
     <body>
+        <div id="backdrop">
+            <div class="template ring">
+                <div class="ring-wrapper">
+                    <div class="ring-outer"></div>
+                    <div class="ring-inner"></div>
+                </div>
+            </div>
+        </div>
         <div id="app">
             <div id="control-panel">
                 <div id="header" class="panel">
@@ -12,6 +20,11 @@
                 </div>
                 <div class="panel">
                     <h2>1. Pick Type</h2>
+                    <ul id="control-pick-type">
+                        <li data-type="ring">Ring</li>
+                        <li data-type="softbox">Softbox</li>
+                        <li data-type="solid">Solid</li>
+                    </ul>
                 </div>
                 <div id="preview-panel" class="panel">
                     <h2>Preview</h2>
@@ -30,6 +43,12 @@
                     <div class="ring-outer"></div>
                     <div class="ring-inner"></div>
                 </div>
+            </div>
+            <div class="template softbox">
+                hello I am softbox
+            </div>
+            <div class="template solid">
+                solid here
             </div>
         </div>
         <script src="script.ts"></script>
