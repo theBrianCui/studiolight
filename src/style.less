@@ -1,4 +1,6 @@
 @import "normalize.less";
+@import "templates.less";
+
 /* Variables */
 :root {
     --light-color: #ffffff;
@@ -57,35 +59,6 @@ h1, h2 {
     padding: 10px;
     .rounded();
     .centered-children();
-}
-
-.ring-wrapper {
-    position: relative;
-    width: 60%;
-    filter: blur(5px);
-    .centered-children();
-
-    .ring-outer {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        background-color: var(--light-color);
-    }
-
-    .ring-inner {
-        position: absolute;
-        height: 65%;
-        width: 65%;
-        border-radius: 50%;
-        background-color: black;
-    }
-}
-
-.ring-wrapper:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
 }
 
 #backdrop {
