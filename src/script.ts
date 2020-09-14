@@ -15,8 +15,10 @@ const TEMPLATES: Map<string, HTMLElement> = (() => {
     return templateMap;
 })();
 const BACKDROP = DOM.getById('backdrop');
+const CONTROL_PANEL = DOM.getById('control-panel');
+const BIG_BUTTON = DOM.getById('big-button');
 
-function toggleBackdrop(template: string) {
+function setBackdrop(template: string) {
     if (!TEMPLATES.has(template)) {
         console.error(`Cannot set backdrop to unknown template type: ${template}`);
     }
@@ -31,6 +33,18 @@ for (const control of CONTROL_LIST) {
     }
 
     control.addEventListener('click', () => {
-        toggleBackdrop(control.dataset.type);
+        setBackdrop(control.dataset.type);
     });
 }
+
+BIG_BUTTON.addEventListener('click', () => {
+    CONTROL_PANEL.classList.add('hidden');
+});
+
+BACKDROP.addEventListener('click', () => {
+    CONTROL_PANEL.classList.remove('hidden');
+});
+
+BACKDROP.addEventListener('mouseover', () => {
+    console.log("Hovering over backdrop!");
+});
