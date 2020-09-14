@@ -1,3 +1,5 @@
+@import "mixins.less";
+
 .ring-wrapper {
     position: relative;
     width: 60%;
@@ -31,4 +33,17 @@
     width: 100%;
     height: 100%;
     background-color: var(--light-color);
+}
+
+.softbox-wrapper {
+    width: 100%;
+    height: 100%;
+    filter: blur(80px);
+    .centered-children();
+
+    .softbox {
+        width: 90%;
+        height: 90%;
+        background-color: var(--light-color);
+    }
 }
