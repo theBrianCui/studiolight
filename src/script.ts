@@ -1,4 +1,5 @@
-import {DOM} from './dom';
+import DOM from './dom';
+import colorTemperature from './colorTemperature';
 
 const CONTROL_LIST: HTMLElement[] = DOM.getChildren(DOM.getById('control-pick-type')) as HTMLElement[];
 const TEMPLATES: Map<string, HTMLElement> = (() => {
@@ -16,6 +17,7 @@ const TEMPLATES: Map<string, HTMLElement> = (() => {
 })();
 const BACKDROP = DOM.getById('backdrop');
 const CONTROL_PANEL = DOM.getById('control-panel');
+const TEMPERATURE_SLIDER = DOM.getById('temperature-slider') as HTMLInputElement;
 const BIG_BUTTON = DOM.getById('big-button');
 
 function setBackdrop(template: string) {
@@ -36,6 +38,13 @@ for (const control of CONTROL_LIST) {
         setBackdrop(control.dataset.type);
     });
 }
+
+TEMPERATURE_SLIDER.addEventListener('input', () => {
+    const rgb = colorTemperature(parseInt(TEMPERATURE_SLIDER.value, 10));
+    const color: string = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    document.documentElement.style
+        .setProperty('--light-color', color);
+});
 
 BIG_BUTTON.addEventListener('click', () => {
     CONTROL_PANEL.classList.add('hidden');

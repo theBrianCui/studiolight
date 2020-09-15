@@ -1,4 +1,4 @@
-export const DOM = {
+export default {
     getById: (id: string): HTMLElement => {
         return document.getElementById(id);
     },
