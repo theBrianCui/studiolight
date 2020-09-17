@@ -39,12 +39,18 @@ for (const control of CONTROL_LIST) {
     });
 }
 
-TEMPERATURE_SLIDER.addEventListener('input', () => {
+function setColor(color: string) {
+    document.documentElement.style.setProperty('--light-color', color);
+}
+
+function inputSliderColor() {
     const rgb = colorTemperature(parseInt(TEMPERATURE_SLIDER.value, 10));
     const color: string = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-    document.documentElement.style
-        .setProperty('--light-color', color);
-});
+    setColor(color);
+}
+
+TEMPERATURE_SLIDER.addEventListener('input', inputSliderColor);
+inputSliderColor();
 
 BIG_BUTTON.addEventListener('click', () => {
     CONTROL_PANEL.classList.add('hidden');
