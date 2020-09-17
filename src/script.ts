@@ -18,6 +18,7 @@ const TEMPLATES: Map<string, HTMLElement> = (() => {
 const BACKDROP = DOM.getById('backdrop');
 const CONTROL_PANEL = DOM.getById('control-panel');
 const TEMPERATURE_SLIDER = DOM.getById('temperature-slider') as HTMLInputElement;
+const TEMPERATURE_RESET = DOM.getById('temperature-reset') as HTMLButtonElement;
 const BIG_BUTTON = DOM.getById('big-button');
 
 function setBackdrop(template: string) {
@@ -39,18 +40,28 @@ for (const control of CONTROL_LIST) {
     });
 }
 
+const TEMPERATURE_DEFAULT_WHITE: string = '6500';
 function setColor(color: string) {
     document.documentElement.style.setProperty('--light-color', color);
 }
 
 function inputSliderColor() {
     const rgb = colorTemperature(parseInt(TEMPERATURE_SLIDER.value, 10));
-    const color: string = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    let color: string = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+
+    if (TEMPERATURE_SLIDER.value === TEMPERATURE_DEFAULT_WHITE) {
+        color = 'rgb(255, 255, 255)';
+    }
     setColor(color);
 }
 
 TEMPERATURE_SLIDER.addEventListener('input', inputSliderColor);
 inputSliderColor();
+
+TEMPERATURE_RESET.addEventListener('click', () => {
+    TEMPERATURE_SLIDER.value = TEMPERATURE_DEFAULT_WHITE;
+    inputSliderColor();
+});
 
 BIG_BUTTON.addEventListener('click', () => {
     CONTROL_PANEL.classList.add('hidden');
