@@ -5,6 +5,7 @@
 /* Variables */
 :root {
     --light-color: #ffffff;
+    --select-green: green;
 }
 
 /* Styles */
@@ -31,6 +32,43 @@ h1, h2 {
     width: 500px;
     flex-shrink: 1;
     margin: 10px;
+}
+
+#control-pick-type {
+    input {
+        display: none;
+    }
+
+    #pick-options {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+
+        label {
+            display: inline-block;
+            border: 4px solid white;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+
+        input:checked+label {
+            border: 4px solid var(--select-green);
+        }
+
+        input:checked+label:after {
+            content: "✔";
+            display: block;
+            float: right;
+            background-color: var(--select-green);
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+
+        label div {
+            height: 50px;
+        }
+    }
 }
 
 .panel {

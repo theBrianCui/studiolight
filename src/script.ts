@@ -1,7 +1,7 @@
 import DOM from './dom';
 import colorTemperature from './colorTemperature';
 
-const CONTROL_LIST: HTMLElement[] = DOM.getChildren(DOM.getById('control-pick-type')) as HTMLElement[];
+const CONTROL_PICK_LIST: HTMLInputElement[] = DOM.query('#pick-options input') as HTMLInputElement[];
 const TEMPLATES: Map<string, HTMLElement> = (() => {
     const templateMap: Map<string, HTMLElement> = new Map();
 
@@ -21,24 +21,38 @@ const TEMPERATURE_SLIDER = DOM.getById('temperature-slider') as HTMLInputElement
 const TEMPERATURE_RESET = DOM.getById('temperature-reset') as HTMLButtonElement;
 const BIG_BUTTON = DOM.getById('big-button');
 
-function setBackdrop(template: string) {
+function setBackdrop() {
+    let template: string|null = null;
+    for (const control of CONTROL_PICK_LIST) {
+        if (control.checked) {
+            template = control.value;
+        }
+    }
+
     if (!TEMPLATES.has(template)) {
         console.error(`Cannot set backdrop to unknown template type: ${template}`);
     }
 
-    BACKDROP.appendChild(TEMPLATES.get(template).cloneNode(true));
-    BACKDROP.removeChild(BACKDROP.children[0]);
-}
-
-for (const control of CONTROL_LIST) {
-    if (!control.dataset.type) {
-        console.error(`Control element has no data-type: ${control}`);
+    const current = BACKDROP.children[0] as HTMLElement;
+    const desired = TEMPLATES.get(template);
+    if (current.dataset.type === desired.dataset.type) {
+        return;
     }
 
-    control.addEventListener('click', () => {
-        setBackdrop(control.dataset.type);
+    BACKDROP.appendChild(desired.cloneNode(true));
+    BACKDROP.removeChild(current);
+}
+
+for (const control of CONTROL_PICK_LIST) {
+    if (!control.value) {
+        console.error(`Control element has no value: ${control}`);
+    }
+
+    control.addEventListener('change', () => {
+        setBackdrop();
     });
 }
+setBackdrop();
 
 const TEMPERATURE_DEFAULT_WHITE: string = '6500';
 function setColor(color: string) {

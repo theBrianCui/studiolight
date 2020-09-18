@@ -18,13 +18,25 @@
                 <div id="header" class="panel">
                     <h1>Studio Light</h1>
                 </div>
-                <div class="panel">
+                <div id="control-pick-type" class="panel">
                     <h2>1. Pick Type</h2>
-                    <ul id="control-pick-type">
-                        <li data-type="ring">Ring</li>
-                        <li data-type="softbox">Softbox</li>
-                        <li data-type="solid">Solid</li>
-                    </ul>
+
+                    <div id="pick-options">
+                        <input type="radio" name="pick" id="pick-ring" value="ring" checked>
+                        <label for="pick-ring">
+                            <div data-type="ring">Ring</div>
+                        </label>
+
+                        <input type="radio" name="pick" id="pick-softbox" value="softbox">
+                        <label for="pick-softbox">
+                            <div data-type="softbox">Softbox</div>
+                        </label>
+
+                        <input type="radio" name="pick" id="pick-solid" value="solid">
+                        <label for="pick-solid">
+                            <div data-type="solid">Solid</div>
+                        </label>
+                    </div>
                 </div>
                 <div class="panel">
                     <h2>2. Pick Color Temperature</h2>
