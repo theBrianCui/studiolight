@@ -68,9 +68,17 @@ h1, h2 {
             top: 0;
         }
 
-        label > div {
+        label > div.pick-template-container {
             height: 120px;
             background-color: black;
+
+            .ring-wrapper {
+                filter: blur(3px);
+            }
+
+            .softbox-wrapper {
+                filter: blur(15px);
+            }
         }
     }
 }
@@ -81,20 +89,6 @@ h1, h2 {
     padding: 10px;
     margin: 10px 0;
     .rounded();
-}
-
-#preview-panel {
-    h2 {
-        margin-bottom: 10px;
-    }
-}
-
-#preview {
-    height: 300px;
-    background-color: black;
-    padding: 10px;
-    .rounded();
-    .centered-children();
 }
 
 #backdrop {
@@ -117,7 +111,7 @@ h1, h2 {
 }
 
 button {
-    text-transform: uppercase;
+    text-transform: lowercase;
     .rounded();
 }
 

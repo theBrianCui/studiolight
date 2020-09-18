@@ -24,7 +24,7 @@
                     <div id="pick-options">
                         <input type="radio" name="pick" id="pick-ring" value="ring" checked>
                         <label for="pick-ring">
-                            <div>
+                            <div class="pick-template-container">
                                 <div class="template" data-type="ring">
                                     <div class="ring-wrapper">
                                         <div class="ring-outer"></div>
@@ -36,7 +36,7 @@
 
                         <input type="radio" name="pick" id="pick-softbox" value="softbox">
                         <label for="pick-softbox">
-                            <div>
+                            <div class="pick-template-container">
                                 <div class="template" data-type="softbox">
                                     <div class="softbox-wrapper">
                                         <div class="softbox"></div>
@@ -47,7 +47,7 @@
 
                         <input type="radio" name="pick" id="pick-solid" value="solid">
                         <label for="pick-solid">
-                            <div>
+                            <div class="pick-template-container">
                                 <div class="template" data-type="solid">
                                     <div class="solid"></div>
                                 </div>
@@ -58,19 +58,10 @@
                 <div class="panel">
                     <h2>2. Pick Color Temperature</h2>
                     <input id="temperature-slider" type="range" min="1500" max="15000" value="6500" />
-                    <button id="temperature-reset">Reset</button>
-                </div>
-                <div id="preview-panel" class="panel">
-                    <h2>Preview</h2>
-                    <div id="preview">
-                        <div class="ring-wrapper">
-                            <div class="ring-outer"></div>
-                            <div class="ring-inner"></div>
-                        </div>
-                    </div>
+                    <button id="temperature-reset">reset</button>
                 </div>
                 <button id="big-button">
-                    Lights on!
+                    lights on
                 </button>
             </div>
         </div>
