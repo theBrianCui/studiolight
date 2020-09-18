@@ -52,6 +52,7 @@ h1, h2 {
         }
 
         input:checked+label {
+            position: relative;
             border: 4px solid var(--select-green);
         }
 
@@ -63,10 +64,13 @@ h1, h2 {
             width: 20px;
             height: 20px;
             text-align: center;
+            position: absolute;
+            top: 0;
         }
 
-        label div {
-            height: 50px;
+        label > div {
+            height: 120px;
+            background-color: black;
         }
     }
 }
@@ -105,13 +109,10 @@ h1, h2 {
     }
 }
 
-#templates {
-    display: none;
-}
-
 .template {
     width: 100%;
     height: 100%;
+    overflow: hidden;
     .centered-children();
 }
 

@@ -5,7 +5,7 @@ const CONTROL_PICK_LIST: HTMLInputElement[] = DOM.query('#pick-options input') a
 const TEMPLATES: Map<string, HTMLElement> = (() => {
     const templateMap: Map<string, HTMLElement> = new Map();
 
-    for (const template of (DOM.getChildren(DOM.getById('templates')) as HTMLElement[])) {
+    for (const template of (DOM.getByClass('template') as HTMLElement[])) {
         if (!template.dataset.type) {
             console.error(`Template element has no data-type: ${template}`);
         }

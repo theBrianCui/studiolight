@@ -24,17 +24,34 @@
                     <div id="pick-options">
                         <input type="radio" name="pick" id="pick-ring" value="ring" checked>
                         <label for="pick-ring">
-                            <div data-type="ring">Ring</div>
+                            <div>
+                                <div class="template" data-type="ring">
+                                    <div class="ring-wrapper">
+                                        <div class="ring-outer"></div>
+                                        <div class="ring-inner"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </label>
 
                         <input type="radio" name="pick" id="pick-softbox" value="softbox">
                         <label for="pick-softbox">
-                            <div data-type="softbox">Softbox</div>
+                            <div>
+                                <div class="template" data-type="softbox">
+                                    <div class="softbox-wrapper">
+                                        <div class="softbox"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </label>
 
                         <input type="radio" name="pick" id="pick-solid" value="solid">
                         <label for="pick-solid">
-                            <div data-type="solid">Solid</div>
+                            <div>
+                                <div class="template" data-type="solid">
+                                    <div class="solid"></div>
+                                </div>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -55,22 +72,6 @@
                 <button id="big-button">
                     Lights on!
                 </button>
-            </div>
-        </div>
-        <div id="templates">
-            <div class="template" data-type="ring">
-                <div class="ring-wrapper">
-                    <div class="ring-outer"></div>
-                    <div class="ring-inner"></div>
-                </div>
-            </div>
-            <div class="template" data-type="softbox">
-                <div class="softbox-wrapper">
-                    <div class="softbox"></div>
-                </div>
-            </div>
-            <div class="template" data-type="solid">
-                <div class="solid"></div>
             </div>
         </div>
         <script src="script.ts"></script>
