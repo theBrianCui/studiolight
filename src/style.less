@@ -6,6 +6,7 @@
 :root {
     --light-color: #ffffff;
     --select-green: green;
+    --outline-gray: #585858;
 }
 
 /* Styles */
@@ -25,6 +26,7 @@ html {
 
 h1, h2 {
     margin: 0;
+    margin-bottom: 16px;
     padding: 0;
 }
 
@@ -40,21 +42,31 @@ h1, h2 {
     }
 
     #pick-options {
+        margin-bottom: 2px;
+    
         list-style-type: none;
         padding: 0;
         display: flex;
 
         label {
             display: inline-block;
-            border: 4px solid white;
+            border: 4px solid var(--outline-gray);
             flex-grow: 1;
             flex-basis: 0;
+            margin-left: 2px;
+            margin-right: 2px;
+            cursor: pointer;
         }
 
         
         .pick-description {
-            color: black;
-            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 20px;
+            text-align: center;
+            color: white;
+            background-color: var(--outline-gray);
         }
 
         input:checked+label {
@@ -69,14 +81,10 @@ h1, h2 {
 
         input:checked+label:after {
             content: "✔";
-            display: block;
-            float: right;
             background-color: var(--select-green);
-            width: 20px;
-            height: 20px;
-            text-align: center;
             position: absolute;
-            top: 0;
+            bottom: -1px;
+            right: 2px;
         }
 
         label > div.pick-template-container {
@@ -124,7 +132,12 @@ h1, h2 {
 
 button {
     text-transform: lowercase;
+    cursor: pointer;
     .rounded();
+}
+
+input[type=range] {
+    cursor: pointer;
 }
 
 #big-button {
