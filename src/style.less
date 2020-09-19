@@ -51,9 +51,20 @@ h1, h2 {
             flex-basis: 0;
         }
 
+        
+        .pick-description {
+            color: black;
+            background-color: white;
+        }
+
         input:checked+label {
             position: relative;
             border: 4px solid var(--select-green);
+
+            .pick-description {
+                color: white;
+                background-color: var(--select-green);
+            }
         }
 
         input:checked+label:after {
@@ -80,6 +91,7 @@ h1, h2 {
                 filter: blur(15px);
             }
         }
+
     }
 }
 
