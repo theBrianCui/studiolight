@@ -19,6 +19,7 @@ const BACKDROP = DOM.getById('backdrop');
 const CONTROL_PANEL = DOM.getById('control-panel');
 const TEMPERATURE_SLIDER = DOM.getById('temperature-slider') as HTMLInputElement;
 const TEMPERATURE_RESET = DOM.getById('temperature-reset') as HTMLButtonElement;
+const TEMPERATURE_VALUE = DOM.getById('temperature-value') as HTMLInputElement;
 const BIG_BUTTON = DOM.getById('big-button');
 
 function setBackdrop() {
@@ -54,28 +55,40 @@ for (const control of CONTROL_PICK_LIST) {
 }
 setBackdrop();
 
-const TEMPERATURE_DEFAULT_WHITE: string = '6500';
+const TEMPERATURE_DEFAULT_WHITE: number = 6500;
 function setColor(color: string) {
     document.documentElement.style.setProperty('--light-color', color);
 }
 
-function inputSliderColor() {
-    const rgb = colorTemperature(parseInt(TEMPERATURE_SLIDER.value, 10));
+function setColorTemperature(temperature: number = TEMPERATURE_DEFAULT_WHITE) {
+    const rgb = colorTemperature(temperature);
     let color: string = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
 
-    if (TEMPERATURE_SLIDER.value === TEMPERATURE_DEFAULT_WHITE) {
+    if (temperature === TEMPERATURE_DEFAULT_WHITE) {
         color = 'rgb(255, 255, 255)';
     }
     setColor(color);
 }
 
-TEMPERATURE_SLIDER.addEventListener('input', inputSliderColor);
-inputSliderColor();
+TEMPERATURE_SLIDER.addEventListener('input', () => {
+    const desired: number = parseInt(TEMPERATURE_SLIDER.value, 10);
+    TEMPERATURE_VALUE.value = desired.toString();
+    setColorTemperature(desired);
+});
 
 TEMPERATURE_RESET.addEventListener('click', () => {
-    TEMPERATURE_SLIDER.value = TEMPERATURE_DEFAULT_WHITE;
-    inputSliderColor();
+    TEMPERATURE_SLIDER.value = TEMPERATURE_DEFAULT_WHITE.toString();
+    TEMPERATURE_VALUE.value = TEMPERATURE_DEFAULT_WHITE.toString();
+    setColorTemperature();
 });
+
+TEMPERATURE_VALUE.addEventListener('input', () => {
+    const desired: number = parseInt(TEMPERATURE_VALUE.value, 10);
+    TEMPERATURE_SLIDER.value = desired.toString();
+    setColorTemperature(desired);
+})
+
+setColorTemperature(TEMPERATURE_DEFAULT_WHITE);
 
 BIG_BUTTON.addEventListener('click', () => {
     CONTROL_PANEL.classList.add('hidden');
